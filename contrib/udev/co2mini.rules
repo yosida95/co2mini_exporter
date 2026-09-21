@@ -1,0 +1,1 @@
+SUBSYSTEM=="hidraw", KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a052", GROUP="co2mini", MODE="0660"

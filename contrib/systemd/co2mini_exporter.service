@@ -1,0 +1,35 @@
+[Unit]
+Description=CO2-mini Prometheus exporter
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/co2mini_exporter -addr=:9200
+Restart=on-failure
+
+User=co2mini
+Group=co2mini
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=yes
+
+DevicePolicy=closed
+DeviceAllow=char-hidraw rw
+
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictRealtime=yes
+
+RestrictAddressFamilies=AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target
